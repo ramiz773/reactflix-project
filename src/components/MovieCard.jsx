@@ -1,7 +1,8 @@
 import React from "react";
+
 import { Link } from "react-router-dom";
+
 function MovieCard({ movie: { title, vote_average, poster_path, id } }) {
-  // const { title, poster_path } = movie;
   return (
     <div className="movieCard">
       <Link to={`movie/${id}`}>

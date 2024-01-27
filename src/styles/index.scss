@@ -54,6 +54,7 @@ footer {
 }
 
 //searchBox
+//searchBox
 .searchBox {
   position: relative;
   border-radius: 5px;
@@ -66,6 +67,52 @@ footer {
     border: none;
     background: transparent;
     width: 100%;
+  }
+  .resultBox {
+    position: absolute;
+    z-index: 100;
+    top: 90%;
+    right: 0;
+    width: 100%;
+    max-height: 400px;
+    background: $stone700;
+    overflow: hidden;
+    overflow-y: scroll;
+    border-radius: 0px 0px 5px 5px;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    .loading {
+      padding: 20px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      li {
+        padding: 10px 10px;
+        border-bottom: 1px solid $stone800;
+
+        &:hover {
+          background: $stone800;
+        }
+        @include flexbox(row, center, flex-start, 10px);
+        img {
+          max-width: 48px;
+        }
+        h4 {
+          cursor: pointer;
+          color: $stone100;
+          line-height: 1.2;
+          font-size: 16px;
+        }
+        h4:hover {
+          color: $amber;
+        }
+        p {
+          font-size: 14px;
+        }
+      }
+    }
   }
 }
 

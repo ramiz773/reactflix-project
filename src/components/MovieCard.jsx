@@ -1,8 +1,10 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
+import FavoriteButton from "./FavoriteButton";
 
-function MovieCard({ movie: { title, vote_average, poster_path, id } }) {
+function MovieCard({ movie }) {
+  const { title, vote_average, poster_path, id } = movie;
   return (
     <div className="movieCard">
       <Link to={`movie/${id}`}>
@@ -14,7 +16,7 @@ function MovieCard({ movie: { title, vote_average, poster_path, id } }) {
           <h2 className="movieCardTitle">{title}</h2>
           <p className="movieCardRating">{vote_average}</p>
         </div>
-        <div className="favButton">#</div>
+        <FavoriteButton movie={movie} />
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ function SearchBox() {
   useEffect(() => {
     let timer = setTimeout(() => {
       setDefferedQuery(query);
-    }, 1000);
+    }, 500);
     return () => {
       clearTimeout(timer);
     };

@@ -1,11 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useFetch from "../Hooks/useFetch";
 import { useNavigate } from "react-router-dom";
+
 function SearchBox() {
   const [query, setQeuey] = useState("");
-  const [data] = useFetch("/search/movie", { query: query });
+  const [defferedQuerry, setDefferedQuery] = useState("");
+  const [data] = useFetch("/search/movie", { query: defferedQuerry });
   const navigate = useNavigate();
 
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      setDefferedQuery(query);
+    }, 5000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [query]);
   return (
     <div className="searchBox">
       <input
@@ -20,9 +30,8 @@ function SearchBox() {
             const releaseDate = new Date(movie.release_date).getFullYear();
             return (
               <li key={movie.id}>
-                >
                 <img
-                  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                  src={`https://image.tmdb.org/t/p/w92/${movie.poster_path}`}
                   alt="movie poster"
                 />
                 <h4 onClick={() => navigate(`movie/${movie.id}`)}>

@@ -1,15 +1,19 @@
-import React from "react";
 import Wrapper from "../components/Wrapper";
-import { useState } from "react";
+import { useContext } from "react";
+import { AppContext } from "../Context/appContext";
 import MovieCard from "../components/MovieCard";
 import Pagination from "../components/Pagination";
 import Loader from "../components/Loader";
 import ErrorMess from "../components/ErrorMess";
 import Slider from "../components/Slider";
 import useFetch from "../Hooks/useFetch";
+
 function Home() {
-  const [page, setPage] = useState(1);
+  const {
+    state: { page },
+  } = useContext(AppContext);
   const [data, loading, error] = useFetch("movie/popular", { page: page });
+
   const { results, total_pages } = data;
   return (
     <>
@@ -25,11 +29,7 @@ function Home() {
                 return <MovieCard movie={movie} key={movie.id} />;
               })}
             </div>
-            <Pagination
-              setPage={setPage}
-              page={page}
-              totalPages={total_pages}
-            />
+            <Pagination page={page} totalPages={total_pages} />
           </>
         )}
       </Wrapper>

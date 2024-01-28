@@ -5,7 +5,7 @@ import HeartLinned from "../assets/heart-lined.svg";
 function FavoriteButton({ movie }) {
   const { state, dispatch } = useContext(AppContext);
 
-  const favorited = state.favorites.some((fav) => fav.id === movie.id);
+  const favorited = state?.favorites?.some((fav) => fav.id === movie.id);
   const handleFavorites = () => {
     favorited
       ? dispatch({ type: "REMOVE_FAVORITE", payload: movie.id })

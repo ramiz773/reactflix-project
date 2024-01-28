@@ -1,4 +1,5 @@
 export const initialState = {
+  page: 1,
   favorites: [],
 };
 
@@ -15,6 +16,10 @@ export const reducer = (state, { type, payload }) => {
         ...state,
         favorites: state.favorites.filter((fav) => fav.id !== payload),
       };
+    case "NEXT_PAGE":
+      return { ...state, page: state.page + payload };
+    case "PREVIOUS_PAGE":
+      return { ...state, page: state.page - payload };
     default:
       return state;
   }

@@ -50,6 +50,25 @@ footer {
   .headerLeft {
     @include flexbox(row, stretch, space-between, 20px);
     flex: 1;
+    .favCount {
+      height: 100%;
+      font-weight: 700;
+      position: relative;
+      @include flexbox(row, center, space-between, 5px);
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+    .count {
+      position: absolute;
+      right: 0;
+      top: 0px;
+      font-size: 12px;
+      padding: 0px 5px;
+      background: $amber;
+      color: $stone800;
+      @include rounded;
+    }
   }
 }
 
